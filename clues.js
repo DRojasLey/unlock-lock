@@ -2,29 +2,48 @@
 //DOM declarations
 const clueSectionMainContainer =  document.getElementById('clueSectionMainContainer');
 const addClueButton = document.getElementById('addClueButton');
-const defaultClueContainer = document.getElementById('clueContainer')
+const defaultClueContainer = document.getElementById('clueContainer');
 const deleteClueButton = document.getElementById('deleteClueButton');
-
+const decryptButton = document.getElementById('decryptButton');
 
 //TODO use this clues count to make each clue unique so we can collect all the clues data in an obj
 let cluesCount = 1
 
+
+
+// event listenerers
 window.addEventListener('load', () =>{
     addNewClue();
-})
+});
 
-//Addbutton event listener
 addClueButton.addEventListener('click', () =>{
+    if (deleteClueButton.disabled === true) deleteClueButton.disabled = false;
+    if (decryptButton.disabled === true) decryptButton.disabled = false;
+
     if(clueSectionMainContainer.childElementCount < 5 ) {
         addNewClue();
     } else {
         addClueButton.disabled = true ;
     }
-})
+});
 
 deleteClueButton.addEventListener('click', () => {
-    deleteClue();
+    if (clueSectionMainContainer.childElementCount > 0){
+        deleteClue();
+    } else {
+        deleteClueButton.disabled = true;
+    }
 });
+
+decryptButton.addEventListener('click', () => {
+    if (!(clueSectionMainContainer.childElementCount)) {
+        decryptButton.disabled = true
+    } else {
+        console.log('working fine')
+    }
+})
+
+
 
 /**
  * Add new clue to the clues page
@@ -113,4 +132,4 @@ const deleteClue = () => {
     clueSectionMainContainer.lastChild.remove();
     addClueButton.disabled = false ;
 
-}
+};
