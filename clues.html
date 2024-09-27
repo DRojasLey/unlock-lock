@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un-locker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1 class="mainTitle">Lock Decryptor</h1>
+        <h2 class="pageSubTitle" id="pageSubTitle">Input the clues</h2>
+        <h6>(Max. 5)</h6>
+    </header>
+    <section class="clueSectionMainContainer" id="clueSectionMainContainer">
+        <section class="clueContainer" id="clueContainer">
+            <section class="clueBox">
+                <h4 class="subSubtitle" id="subtitleSelectNumbers">Select Clue Numbers</h4>
+                <label for="clueNumbers1"> number</label>
+                <select name="clueNumbers1" id="clueNumbers1">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <label for="clueNumbers2"> number</label>
+                <select name="clueNumbers2" id="clueNumbers2">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <label for="clueNumbers3"> number</label>
+                <select name="clueNumbers3" id="clueNumbers3">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </section>
+            <section class="clueBox">
+                <h4 class="subSubtitle">How many correct?</h4>
+                <label for="clueCorrectCount"></label>
+                <select name="clueCorrectCount" id="clueCorrectCount">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </section>
+            <section class="clueBox">
+                <h4 class="subSubtitle">correct positions?</h4>
+                <label for="cluePositionCount"></label>
+                <select name="cluePositionCount" id="cluePositionCount">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </section>
+        </section>
+
+    </section>
+    <section class="functionsButtonContainer" id="functionsButtonContainer">
+        <button class="addClueButton" id="deleteClueButton">
+            - DEL
+        </button>
+        <button class="addClueButton" id="addClueButton">
+            + ADD
+        </button>
+    </section>
+
+    <button class="decryptButton" id="decryptButton">Decrypt!</button>
+</body>
+<script src="clues.js"></script>
+</html>
