@@ -9,6 +9,10 @@ const deleteClueButton = document.getElementById('deleteClueButton');
 //TODO use this clues count to make each clue unique so we can collect all the clues data in an obj
 let cluesCount = 1
 
+window.addEventListener('load', () =>{
+    addNewClue();
+})
+
 //Addbutton event listener
 addClueButton.addEventListener('click', () =>{
     if(clueSectionMainContainer.childElementCount < 5 ) {
