@@ -16,11 +16,16 @@ header {
     text-align: center;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+
 .mainTitle {
     text-align: center;
 }
 
-.clueSectionMainContainer{
+.sectionMainContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;

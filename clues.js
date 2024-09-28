@@ -1,6 +1,6 @@
 
 //DOM declarations
-const clueSectionMainContainer =  document.getElementById('clueSectionMainContainer');
+const sectionMainContainer =  document.getElementById('sectionMainContainer');
 const addClueButton = document.getElementById('addClueButton');
 const defaultClueContainer = document.getElementById('clueContainer');
 const deleteClueButton = document.getElementById('deleteClueButton');
@@ -20,7 +20,7 @@ addClueButton.addEventListener('click', () =>{
     if (deleteClueButton.disabled === true) deleteClueButton.disabled = false;
     if (decryptButton.disabled === true) decryptButton.disabled = false;
 
-    if(clueSectionMainContainer.childElementCount < 5 ) {
+    if(sectionMainContainer.childElementCount < 10 ) {
         cluesCount++;
         addNewClue();
     } else {
@@ -29,7 +29,7 @@ addClueButton.addEventListener('click', () =>{
 });
 
 deleteClueButton.addEventListener('click', () => {
-    if (clueSectionMainContainer.childElementCount > 0){
+    if (sectionMainContainer.childElementCount > 0){
         cluesCount--;
         deleteClue();
     } else {
@@ -38,10 +38,10 @@ deleteClueButton.addEventListener('click', () => {
 });
 
 decryptButton.addEventListener('click', () => {
-    if (!(clueSectionMainContainer.childElementCount)) {
+    if (!(sectionMainContainer.childElementCount)) {
         decryptButton.disabled = true
     } else {
-        console.log('working fine')
+        getClueData();
     }
 })
 
@@ -124,7 +124,7 @@ const addNewClue = () => {
     };
 
     createClueBox();
-    clueSectionMainContainer.appendChild(newClueContainer);
+    sectionMainContainer.appendChild(newClueContainer);
 
 };
 
@@ -132,7 +132,40 @@ const addNewClue = () => {
  * Delete the most recent clue
  */
 const deleteClue = () => {
-    clueSectionMainContainer.lastChild.remove();
+    sectionMainContainer.lastChild.remove();
     addClueButton.disabled = false ;
 
+};
+
+/**
+ * Captures the clue data in an object ready for processing
+ */
+const getClueData = () => {
+    const clueContainers = document.querySelectorAll('.clueContainer');
+    const cluesData = {};
+
+    clueContainers.forEach((clueContainer, clueIndex) => {
+        const clueObj = {};
+
+        // Select elements for 'Numbers'
+        const numberSelects = clueContainer.querySelectorAll('select[name^="clueNumbers"]');
+        const numbers = [];
+        numberSelects.forEach((select) => {
+            numbers.push(select.value);
+        });
+        clueObj['numbers'] = numbers;
+
+        // Select element for 'Correct'
+        const correctSelect = clueContainer.querySelector('select[name^="clueCorrect"]');
+        clueObj['correct'] = correctSelect ? correctSelect.value : null;
+
+        // Select element for 'Position'
+        const positionSelect = clueContainer.querySelector('select[name^="cluePosition"]');
+        clueObj['position'] = positionSelect ? positionSelect.value : null;
+
+        // Add the current clue's data to the cluesData object
+        cluesData[`clue${clueIndex + 1}`] = clueObj;
+    });
+
+    console.log(cluesData);
 };
